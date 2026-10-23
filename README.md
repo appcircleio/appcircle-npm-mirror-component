@@ -13,7 +13,7 @@ For the Android part of a React Native build, add the Gradle Mirror step too. Fo
 ## Optional Input Variables
 
 - `$AC_MIRROR_NPM`: URL of an npm repository on your artifact proxy, a proxy of `https://registry.npmjs.org`.
-- Lockfile (`update`, `fail` or `warn`, default `fail`): what the step does when a lockfile of the project still downloads from the public registry. Set it on the step, not in the group: it depends on the project.
+- Lockfile (`update`, `fail` or `warn`, default `update`): what the step does when a lockfile of the project still downloads from the public registry. Set it on the step, not in the group: it depends on the project.
 - `$AC_MIRROR_NODE`: URL of a raw (generic) repository on your artifact proxy that proxies `https://nodejs.org/dist`.
 - `$AC_MIRROR_REACT_NATIVE_MAVEN` (default `$AC_MIRROR_GRADLE`): URL of a Maven repository on your artifact proxy that serves Maven Central, usually the same group as the Gradle Mirror.
 
@@ -52,8 +52,8 @@ The step checks the lockfiles of the cloned project (`node_modules` excluded):
 
 A lockfile that still downloads from the public registry depends on the Lockfile input:
 
-- `update`: the step points the URLs at `AC_MIRROR_NPM` in the cloned copy and logs the change. Nothing is pushed back to your repository.
-- `fail` (default): the build stops at once and names the file.
+- `update` (default): the step points the URLs at `AC_MIRROR_NPM` in the cloned copy and logs the change. Nothing is pushed back to your repository.
+- `fail`: the build stops at once and names the file.
 - `warn`: the step prints a warning and the build continues.
 
 ## React Native Versions

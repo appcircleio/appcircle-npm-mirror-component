@@ -129,7 +129,7 @@ if npm.nil? && node.nil? && maven.nil?
   exit 0
 end
 
-lockfile_mode = (get_env_variable('AC_MIRROR_NPM_LOCKFILE') || 'fail').downcase
+lockfile_mode = (get_env_variable('AC_MIRROR_NPM_LOCKFILE') || 'update').downcase
 abort_with1("AC_MIRROR_NPM_LOCKFILE must be one of #{LOCKFILE_MODES.join(', ')}.") unless LOCKFILE_MODES.include?(lockfile_mode)
 
 env_file = get_env_variable('AC_ENV_FILE_PATH')
